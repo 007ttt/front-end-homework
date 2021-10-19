@@ -117,6 +117,7 @@
         let li = document.createElement('li');
         li.innerHTML = list[i];
         ol.appendChild(li);
+    //    method 2:
     //    let ni = document.createTextNode(list[i]);
     //    li.appendChild(ni);
     //    ol.appendChild(li);
@@ -148,9 +149,8 @@
     let sel = document.querySelector('select');
     for(let i = 0; i < dropDownList.length; i++){
         let opt = document.createElement('option');
-        //let nn = document.createTextNode(dropDownList[i].content);
-        //opt.appendChild(nn);
         opt.innerHTML = dropDownList[i].content;
+        // set value attribute for opt
         opt.setAttribute('value', dropDownList[i].value);
         sel.appendChild(opt);
     }
