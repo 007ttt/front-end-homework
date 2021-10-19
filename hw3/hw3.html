@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./hw3.css">
+</head>
+<body>
+    <table>
+        <caption>1. This is a table</caption>
+        <thead>
+            <tr>
+                <th>Student Name</th>
+                <th>Age</th>
+                <th>Phone #</th>
+                <th>Address</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <div class="section1">
+        <div class="title">2. This is a search bar!</div>
+        <div class="center">
+            <input class="sea_input" placeholder="Search">
+            <button class="click center">Click Me</button>
+       </div>
+    </div>
+
+    <div class="section1">
+        <div class="title">3. order list and unordered list!</div>
+        <div class="center">An ordered technologies list:</div>
+        <div class="gotocenter">
+            <ol>
+            </ol>
+        </div>
+        <div class="center">An unordered technologies list:</div>
+        <div class="gotocenter">
+            <ul>
+            </ul>
+        </div>
+    </div>
+    <div class="section1">
+        <div class="title">4. A dropdown list</div>
+        <div class="center">
+            Select City:
+            <select class="center" name="cityName" id="city">  
+            </select>
+        </div>
+    </div>
+
+    <script>
+        //1. This is a table
+        const tableInfo = [{
+            studentName: 'John',
+            Age: 19,
+            Phone: '455-983-0903',
+            Address: '123 Ave, San Francisco, CA, 94011',
+            },{
+            studentName: 'Alex',
+            Age: 21,
+            Phone: '455-983-0912',
+            Address: '456 Rd, San Francisco, CA, 94012',
+            },{
+            studentName: 'Josh',
+            Age: 22,
+            Phone: '455-345-0912',
+            Address: '789 Dr, Newark, CA, 94016',
+            },{
+            studentName: 'Matt',
+            Age: 23,
+            Phone: '321-345-0912',
+            Address: '223 Dr, Sunnyvale, CA, 94016',
+            },];
+
+            // create row - base on the length of the array
+            let tbody = document.querySelector('tbody');
+            for(let i = 0; i < tableInfo.length; i++){
+                //create tr
+                let tr = document.createElement('tr');
+                tbody.appendChild(tr);
+                // create td in tr
+                for(let k in tableInfo[i]){
+                    let td = document.createElement('td');
+                    td.innerHTML = tableInfo[i][k];
+                    tr.appendChild(td);
+                }
+            // add delete button
+            let td = document.createElement('td');
+            td.innerHTML = '<a href="javascript:;">Delete</a>';
+            tr.appendChild(td);
+            }
+            //Delete td
+            let as = document.querySelectorAll('a');
+            for(let i = 0; i < as.length; i++){
+                as[i].onclick = function(){
+                    //click element 'a' will delete tr
+                    tbody.removeChild(this.parentNode.parentNode);
+                }
+            }
+
+    //2. This is a search bar!
+    let cont = document.querySelector('input');
+    let bun = document.querySelector('button');
+    bun.onclick = function(){
+        alert("Your input content is: " + cont.value);
+    };
+
+    //3. order list and unordered list! An ordered technologies list:
+    const list = ['HTML', 'JavaScript', 'CSS', 'React', 'Redux', 'Java'];
+    let ol = document.querySelector('ol');
+    for(let i = 0; i < list.length; i++){
+        let li = document.createElement('li');
+        li.innerHTML = list[i];
+        ol.appendChild(li);
+    //    let ni = document.createTextNode(list[i]);
+    //    li.appendChild(ni);
+    //    ol.appendChild(li);
+    }
+
+    //An unordered technologies list:
+    let ul = document.querySelector('ul');
+    for(let i = 0; i < list.length; i++){
+        let li = document.createElement('li');
+        li.innerHTML = list[i];
+        ul.appendChild(li);
+    }
+
+    //4. A dropdown list
+    const dropDownList = [{ 
+        value: 'newark', content: 'Newark' 
+    },{ 
+        value: 'santaClara', content: 'Santa Clara' 
+    },{ 
+        value: 'unionCity', content: 'Union City' 
+    },{ 
+        value: 'albany', content: 'Albany' 
+    },{ 
+        value: 'dalyCity', content: 'Daly City' 
+    },{ 
+        value: 'sanJose', content: 'San Jose' 
+    },];
+
+    let sel = document.querySelector('select');
+    for(let i = 0; i < dropDownList.length; i++){
+        let opt = document.createElement('option');
+        //let nn = document.createTextNode(dropDownList[i].content);
+        //opt.appendChild(nn);
+        opt.innerHTML = dropDownList[i].content;
+        opt.setAttribute('value', dropDownList[i].value);
+        sel.appendChild(opt);
+    }
+    </script>
+</body>
+</html>
